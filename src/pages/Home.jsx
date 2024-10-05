@@ -1,5 +1,13 @@
 import React from 'react';
+import Banner from '../components/Banner';
+import ArrivalsSection from '../components/ArrivalsSection';
 
 export default function Home() {
-  return <div>메인</div>;
+  return (
+    <div className='flex flex-col items-center'>
+      <Banner />
+      <ArrivalsSection title='Black' />
+      <ArrivalsSection title='White' />
+    </div>
+  );
 }
