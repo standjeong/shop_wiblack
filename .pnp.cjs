@@ -27,13 +27,16 @@ const RAW_RUNTIME_STATE =
       [null, {\
         "packageLocation": "./",\
         "packageDependencies": [\
+          ["@firebase/app", "npm:0.10.12"],\
           ["@testing-library/jest-dom", "npm:5.17.0"],\
           ["@testing-library/react", "virtual:48c7085f481555af3791f0207a59e98a43ecc8d8e5131a9d89f81af2ca813b6acba08169cb24f63400d505e00ce89aa8848f9d78a310414ba4d87354c409ece3#npm:13.4.0"],\
           ["@testing-library/user-event", "virtual:48c7085f481555af3791f0207a59e98a43ecc8d8e5131a9d89f81af2ca813b6acba08169cb24f63400d505e00ce89aa8848f9d78a310414ba4d87354c409ece3#npm:13.5.0"],\
           ["eslint-config-react-app", "virtual:48c7085f481555af3791f0207a59e98a43ecc8d8e5131a9d89f81af2ca813b6acba08169cb24f63400d505e00ce89aa8848f9d78a310414ba4d87354c409ece3#npm:7.0.1"],\
+          ["eslint-plugin-react", "virtual:48c7085f481555af3791f0207a59e98a43ecc8d8e5131a9d89f81af2ca813b6acba08169cb24f63400d505e00ce89aa8848f9d78a310414ba4d87354c409ece3#npm:7.37.1"],\
           ["firebase", "npm:10.14.0"],\
           ["react", "npm:18.3.1"],\
           ["react-dom", "virtual:48c7085f481555af3791f0207a59e98a43ecc8d8e5131a9d89f81af2ca813b6acba08169cb24f63400d505e00ce89aa8848f9d78a310414ba4d87354c409ece3#npm:18.3.1"],\
+          ["react-icons", "virtual:48c7085f481555af3791f0207a59e98a43ecc8d8e5131a9d89f81af2ca813b6acba08169cb24f63400d505e00ce89aa8848f9d78a310414ba4d87354c409ece3#npm:5.3.0"],\
           ["react-router-dom", "virtual:48c7085f481555af3791f0207a59e98a43ecc8d8e5131a9d89f81af2ca813b6acba08169cb24f63400d505e00ce89aa8848f9d78a310414ba4d87354c409ece3#npm:6.26.2"],\
           ["react-scripts", "virtual:48c7085f481555af3791f0207a59e98a43ecc8d8e5131a9d89f81af2ca813b6acba08169cb24f63400d505e00ce89aa8848f9d78a310414ba4d87354c409ece3#npm:5.0.1"],\
           ["tailwindcss", "npm:3.4.13"],\
@@ -10093,10 +10096,48 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "SOFT"\
       }],\
+      ["npm:7.37.1", {\
+        "packageLocation": "../../../AppData/Local/Yarn/Berry/cache/eslint-plugin-react-npm-7.37.1-c62b7e0250-10c0.zip/node_modules/eslint-plugin-react/",\
+        "packageDependencies": [\
+          ["eslint-plugin-react", "npm:7.37.1"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
       ["virtual:02f465f26089417765adda15be360b5a4161e51cba5ef727cecd65fe3dfa775a0cfb356670ce4d306ce98368adb82b98c7fcd4b44630865bd4602339e1119917#npm:7.37.0", {\
         "packageLocation": "./.yarn/__virtual__/eslint-plugin-react-virtual-2c5970b6fb/4/AppData/Local/Yarn/Berry/cache/eslint-plugin-react-npm-7.37.0-ff28ccaec6-10c0.zip/node_modules/eslint-plugin-react/",\
         "packageDependencies": [\
           ["eslint-plugin-react", "virtual:02f465f26089417765adda15be360b5a4161e51cba5ef727cecd65fe3dfa775a0cfb356670ce4d306ce98368adb82b98c7fcd4b44630865bd4602339e1119917#npm:7.37.0"],\
+          ["@types/eslint", null],\
+          ["array-includes", "npm:3.1.8"],\
+          ["array.prototype.findlast", "npm:1.2.5"],\
+          ["array.prototype.flatmap", "npm:1.3.2"],\
+          ["array.prototype.tosorted", "npm:1.1.4"],\
+          ["doctrine", "npm:2.1.0"],\
+          ["es-iterator-helpers", "npm:1.0.19"],\
+          ["eslint", null],\
+          ["estraverse", "npm:5.3.0"],\
+          ["hasown", "npm:2.0.2"],\
+          ["jsx-ast-utils", "npm:3.3.5"],\
+          ["minimatch", "npm:3.1.2"],\
+          ["object.entries", "npm:1.1.8"],\
+          ["object.fromentries", "npm:2.0.8"],\
+          ["object.values", "npm:1.2.0"],\
+          ["prop-types", "npm:15.8.1"],\
+          ["resolve", "patch:resolve@npm%3A2.0.0-next.5#optional!builtin<compat/resolve>::version=2.0.0-next.5&hash=c3c19d"],\
+          ["semver", "npm:6.3.1"],\
+          ["string.prototype.matchall", "npm:4.0.11"],\
+          ["string.prototype.repeat", "npm:1.0.0"]\
+        ],\
+        "packagePeers": [\
+          "@types/eslint",\
+          "eslint"\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["virtual:48c7085f481555af3791f0207a59e98a43ecc8d8e5131a9d89f81af2ca813b6acba08169cb24f63400d505e00ce89aa8848f9d78a310414ba4d87354c409ece3#npm:7.37.1", {\
+        "packageLocation": "./.yarn/__virtual__/eslint-plugin-react-virtual-aab764274e/4/AppData/Local/Yarn/Berry/cache/eslint-plugin-react-npm-7.37.1-c62b7e0250-10c0.zip/node_modules/eslint-plugin-react/",\
+        "packageDependencies": [\
+          ["eslint-plugin-react", "virtual:48c7085f481555af3791f0207a59e98a43ecc8d8e5131a9d89f81af2ca813b6acba08169cb24f63400d505e00ce89aa8848f9d78a310414ba4d87354c409ece3#npm:7.37.1"],\
           ["@types/eslint", null],\
           ["array-includes", "npm:3.1.8"],\
           ["array.prototype.findlast", "npm:1.2.5"],\
@@ -16601,6 +16642,28 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["react-icons", [\
+      ["npm:5.3.0", {\
+        "packageLocation": "../../../AppData/Local/Yarn/Berry/cache/react-icons-npm-5.3.0-3814684035-10c0.zip/node_modules/react-icons/",\
+        "packageDependencies": [\
+          ["react-icons", "npm:5.3.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:48c7085f481555af3791f0207a59e98a43ecc8d8e5131a9d89f81af2ca813b6acba08169cb24f63400d505e00ce89aa8848f9d78a310414ba4d87354c409ece3#npm:5.3.0", {\
+        "packageLocation": "./.yarn/__virtual__/react-icons-virtual-cd8b70073e/4/AppData/Local/Yarn/Berry/cache/react-icons-npm-5.3.0-3814684035-10c0.zip/node_modules/react-icons/",\
+        "packageDependencies": [\
+          ["react-icons", "virtual:48c7085f481555af3791f0207a59e98a43ecc8d8e5131a9d89f81af2ca813b6acba08169cb24f63400d505e00ce89aa8848f9d78a310414ba4d87354c409ece3#npm:5.3.0"],\
+          ["@types/react", null],\
+          ["react", "npm:18.3.1"]\
+        ],\
+        "packagePeers": [\
+          "@types/react",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["react-is", [\
       ["npm:16.13.1", {\
         "packageLocation": "../../../AppData/Local/Yarn/Berry/cache/react-is-npm-16.13.1-a9b9382b4f-10c0.zip/node_modules/react-is/",\
@@ -19366,13 +19429,16 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./",\
         "packageDependencies": [\
           ["wiblack", "workspace:."],\
+          ["@firebase/app", "npm:0.10.12"],\
           ["@testing-library/jest-dom", "npm:5.17.0"],\
           ["@testing-library/react", "virtual:48c7085f481555af3791f0207a59e98a43ecc8d8e5131a9d89f81af2ca813b6acba08169cb24f63400d505e00ce89aa8848f9d78a310414ba4d87354c409ece3#npm:13.4.0"],\
           ["@testing-library/user-event", "virtual:48c7085f481555af3791f0207a59e98a43ecc8d8e5131a9d89f81af2ca813b6acba08169cb24f63400d505e00ce89aa8848f9d78a310414ba4d87354c409ece3#npm:13.5.0"],\
           ["eslint-config-react-app", "virtual:48c7085f481555af3791f0207a59e98a43ecc8d8e5131a9d89f81af2ca813b6acba08169cb24f63400d505e00ce89aa8848f9d78a310414ba4d87354c409ece3#npm:7.0.1"],\
+          ["eslint-plugin-react", "virtual:48c7085f481555af3791f0207a59e98a43ecc8d8e5131a9d89f81af2ca813b6acba08169cb24f63400d505e00ce89aa8848f9d78a310414ba4d87354c409ece3#npm:7.37.1"],\
           ["firebase", "npm:10.14.0"],\
           ["react", "npm:18.3.1"],\
           ["react-dom", "virtual:48c7085f481555af3791f0207a59e98a43ecc8d8e5131a9d89f81af2ca813b6acba08169cb24f63400d505e00ce89aa8848f9d78a310414ba4d87354c409ece3#npm:18.3.1"],\
+          ["react-icons", "virtual:48c7085f481555af3791f0207a59e98a43ecc8d8e5131a9d89f81af2ca813b6acba08169cb24f63400d505e00ce89aa8848f9d78a310414ba4d87354c409ece3#npm:5.3.0"],\
           ["react-router-dom", "virtual:48c7085f481555af3791f0207a59e98a43ecc8d8e5131a9d89f81af2ca813b6acba08169cb24f63400d505e00ce89aa8848f9d78a310414ba4d87354c409ece3#npm:6.26.2"],\
           ["react-scripts", "virtual:48c7085f481555af3791f0207a59e98a43ecc8d8e5131a9d89f81af2ca813b6acba08169cb24f63400d505e00ce89aa8848f9d78a310414ba4d87354c409ece3#npm:5.0.1"],\
           ["tailwindcss", "npm:3.4.13"],\
