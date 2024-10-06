@@ -11,6 +11,7 @@ import ProductsWhite from './pages/ProductsWhite';
 import ProductDetail from './pages/ProductDetail';
 import UploadProduct from './pages/UploadProduct';
 import Cart from './pages/Cart';
+import AdminRoute from './pages/AdminRoute';
 
 const router = createBrowserRouter([
   {
@@ -25,7 +26,14 @@ const router = createBrowserRouter([
       { path: '/products/black', element: <ProductsBlack /> },
       { path: '/products/white', element: <ProductsWhite /> },
       { path: '/products/:productId', element: <ProductDetail /> },
-      { path: '/products/upload', element: <UploadProduct /> },
+      {
+        path: '/products/upload',
+        element: (
+          <AdminRoute>
+            <UploadProduct />
+          </AdminRoute>
+        ),
+      },
       { path: '/cart', element: <Cart /> },
     ],
   },

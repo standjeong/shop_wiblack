@@ -4,11 +4,10 @@ import { login, logout, onUserStateChange } from '../api/firebase';
 const AuthContext = createContext();
 
 export function AuthContextProvider({ children }) {
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     onUserStateChange((user) => {
-      console.log('context에서', user);
       setUser(user);
     });
   }, []);
