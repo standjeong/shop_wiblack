@@ -1,12 +1,16 @@
 import { React, useState } from 'react';
 import { IoImageOutline } from 'react-icons/io5';
-// const FormField_CLASS = 'w-full border-2 p-2 mb-2';
+import { imageUpload } from '../api/imageUploader';
+import { addNewProduct } from '../api/firebase';
+
 const FormField_CLASS = 'grid grid-cols-4 border-[1px] p-2 mb-2';
 
 export default function UploadProduct() {
   const [product, setProduct] = useState({});
   const [file, setFile] = useState();
   const [selectedColor, setSelectedColor] = useState('white');
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const handleProductChange = (e) => {
     const { name, value } = e.target;
@@ -19,6 +23,18 @@ export default function UploadProduct() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsLoading(true);
+    imageUpload(file)
+      .then((imgUrl) => {
+        addNewProduct(product, imgUrl);
+      })
+      .then(() => {
+        setIsSuccess(true);
+        setTimeout(() => {
+          setIsSuccess(null);
+        }, 3000);
+      })
+      .finally(() => setIsLoading(false));
   };
 
   return (
@@ -69,7 +85,7 @@ export default function UploadProduct() {
             <div className={FormField_CLASS}>
               <label htmlFor='price'>가격</label>
               <input
-                type='text'
+                type='number'
                 id='price'
                 name='price'
                 placeholder='가격'
@@ -159,12 +175,13 @@ export default function UploadProduct() {
             </div>
           </form>
         </div>
+        {isSuccess && <p>✅제품이 추가되었습니다!</p>}
         <button
           type='submit'
           form='newProduct'
           className='bg-blue-300 w-full py-2 font-semibold text-lg rounded-md'
         >
-          상품 등록하기
+          {isLoading ? '업로드 중...' : '상품 등록하기'}
         </button>
       </section>
     </div>

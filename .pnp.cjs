@@ -40,6 +40,7 @@ const RAW_RUNTIME_STATE =
           ["react-router-dom", "virtual:48c7085f481555af3791f0207a59e98a43ecc8d8e5131a9d89f81af2ca813b6acba08169cb24f63400d505e00ce89aa8848f9d78a310414ba4d87354c409ece3#npm:6.26.2"],\
           ["react-scripts", "virtual:48c7085f481555af3791f0207a59e98a43ecc8d8e5131a9d89f81af2ca813b6acba08169cb24f63400d505e00ce89aa8848f9d78a310414ba4d87354c409ece3#npm:5.0.1"],\
           ["tailwindcss", "npm:3.4.13"],\
+          ["uuid", "npm:10.0.0"],\
           ["web-vitals", "npm:2.1.4"]\
         ],\
         "linkType": "SOFT"\
@@ -18974,6 +18975,13 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["uuid", [\
+      ["npm:10.0.0", {\
+        "packageLocation": "../../../AppData/Local/Yarn/Berry/cache/uuid-npm-10.0.0-4872b46ff8-10c0.zip/node_modules/uuid/",\
+        "packageDependencies": [\
+          ["uuid", "npm:10.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
       ["npm:8.3.2", {\
         "packageLocation": "../../../AppData/Local/Yarn/Berry/cache/uuid-npm-8.3.2-eca0baba53-10c0.zip/node_modules/uuid/",\
         "packageDependencies": [\
@@ -19442,6 +19450,7 @@ const RAW_RUNTIME_STATE =
           ["react-router-dom", "virtual:48c7085f481555af3791f0207a59e98a43ecc8d8e5131a9d89f81af2ca813b6acba08169cb24f63400d505e00ce89aa8848f9d78a310414ba4d87354c409ece3#npm:6.26.2"],\
           ["react-scripts", "virtual:48c7085f481555af3791f0207a59e98a43ecc8d8e5131a9d89f81af2ca813b6acba08169cb24f63400d505e00ce89aa8848f9d78a310414ba4d87354c409ece3#npm:5.0.1"],\
           ["tailwindcss", "npm:3.4.13"],\
+          ["uuid", "npm:10.0.0"],\
           ["web-vitals", "npm:2.1.4"]\
         ],\
         "linkType": "SOFT"\
