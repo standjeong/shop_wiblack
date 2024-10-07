@@ -1,5 +1,172 @@
-import React from 'react';
+import { React, useState } from 'react';
+import { IoImageOutline } from 'react-icons/io5';
+// const FormField_CLASS = 'w-full border-2 p-2 mb-2';
+const FormField_CLASS = 'grid grid-cols-4 border-[1px] p-2 mb-2';
 
 export default function UploadProduct() {
-  return <div></div>;
+  const [product, setProduct] = useState({});
+  const [file, setFile] = useState();
+  const [selectedColor, setSelectedColor] = useState('white');
+
+  const handleProductChange = (e) => {
+    const { name, value } = e.target;
+    if (name === 'color') {
+      setSelectedColor(value);
+    }
+    setProduct({ ...product, [name]: value });
+  };
+  const getFile = (e) => setFile(e.target.files[0]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
+  return (
+    <div className='flex flex-col items-center'>
+      <h1 className='text-2xl text-center my-10'>상품 등록</h1>
+      <section className='flex-col gap-3 justify-center max-w-screen-lg'>
+        <div className='flex gap-2'>
+          <div className='w-1/3 w-[250px] max-h-[350px] mb-2 overflow-hidden'>
+            {file && (
+              <img
+                src={URL.createObjectURL(file)}
+                alt='product'
+                className='w-full'
+              />
+            )}
+            {!file && (
+              <div className='w-full h-full bg-gray-100 text-slate-300 flex flex-col items-center justify-center'>
+                <IoImageOutline className='text-7xl' />
+                <p>이미지 미리보기</p>
+              </div>
+            )}
+          </div>
+          <form id='newProduct' onSubmit={handleSubmit} className='w-2/3'>
+            <div className={FormField_CLASS}>
+              <label>이미지 파일</label>
+              <input
+                type='file'
+                accept='image/*'
+                name='file'
+                onChange={getFile}
+                required
+                className='col-span-3'
+              />
+            </div>
+            <div className={FormField_CLASS}>
+              <label htmlFor='title'>상품명</label>
+              <input
+                type='text'
+                id='title'
+                name='title'
+                placeholder='상품명'
+                value={product.title ?? ''}
+                onChange={handleProductChange}
+                required
+                className='col-span-3'
+              />
+            </div>
+            <div className={FormField_CLASS}>
+              <label htmlFor='price'>가격</label>
+              <input
+                type='text'
+                id='price'
+                name='price'
+                placeholder='가격'
+                value={product.price ?? ''}
+                onChange={handleProductChange}
+                required
+                className='col-span-3'
+              />
+            </div>
+            <div className={`flex ${FormField_CLASS}`}>
+              <label className='block'>색상</label>
+              <div className='flex gap-1'>
+                {/* white 라디오 버튼 */}
+                <input
+                  type='radio'
+                  id='white'
+                  name='color'
+                  value='white'
+                  checked={selectedColor === 'white'}
+                  onChange={handleProductChange}
+                  required
+                  className='hidden'
+                />
+                <label
+                  htmlFor='white'
+                  className={`cursor-pointer w-12 h-full bg-white border-[3px] border-gray-300 ${
+                    selectedColor === 'white' ? 'border-red-500' : ''
+                  } `}
+                ></label>
+                {/* black 라디오 버튼 */}
+                <input
+                  type='radio'
+                  id='black'
+                  name='color'
+                  value='black'
+                  checked={selectedColor === 'black'}
+                  onChange={handleProductChange}
+                  required
+                  className='hidden'
+                />
+                <label
+                  htmlFor='black'
+                  className={`cursor-pointer w-12 h-full bg-black border-[3px] border-gray-300 ${
+                    selectedColor === 'black' ? 'border-red-500' : ''
+                  } `}
+                ></label>
+              </div>
+            </div>
+            <div className={FormField_CLASS}>
+              <label htmlFor='category'>카테고리</label>
+              <input
+                type='text'
+                id='category'
+                name='category'
+                placeholder='카테고리'
+                value={product.category ?? ''}
+                onChange={handleProductChange}
+                required
+                className='col-span-3'
+              />
+            </div>
+            <div className={FormField_CLASS}>
+              <label htmlFor='description'>설명</label>
+              <input
+                type='text'
+                id='description'
+                name='description'
+                placeholder='설명'
+                value={product.description ?? ''}
+                onChange={handleProductChange}
+                required
+                className='col-span-3'
+              />
+            </div>
+            <div className={FormField_CLASS}>
+              <label htmlFor='option'>옵션</label>
+              <input
+                type='text'
+                id='option'
+                name='option'
+                placeholder='콤마(,)로 구분해서 입력하세요.'
+                value={product.option ?? ''}
+                onChange={handleProductChange}
+                required
+                className='col-span-3'
+              />
+            </div>
+          </form>
+        </div>
+        <button
+          type='submit'
+          form='newProduct'
+          className='bg-blue-300 w-full py-2 font-semibold text-lg rounded-md'
+        >
+          상품 등록하기
+        </button>
+      </section>
+    </div>
+  );
 }
