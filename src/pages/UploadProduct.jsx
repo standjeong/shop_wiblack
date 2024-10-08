@@ -6,17 +6,13 @@ import { addNewProduct } from '../api/firebase';
 const FormField_CLASS = 'grid grid-cols-4 border-[1px] p-2 mb-2';
 
 export default function UploadProduct() {
-  const [product, setProduct] = useState({});
+  const [product, setProduct] = useState({ color: 'white' });
   const [file, setFile] = useState();
-  const [selectedColor, setSelectedColor] = useState('white');
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
   const handleProductChange = (e) => {
     const { name, value } = e.target;
-    if (name === 'color') {
-      setSelectedColor(value);
-    }
     setProduct({ ...product, [name]: value });
   };
   const getFile = (e) => setFile(e.target.files[0]);
@@ -104,7 +100,7 @@ export default function UploadProduct() {
                   id='white'
                   name='color'
                   value='white'
-                  checked={selectedColor === 'white'}
+                  checked={product.color === 'white'}
                   onChange={handleProductChange}
                   required
                   className='hidden'
@@ -112,7 +108,7 @@ export default function UploadProduct() {
                 <label
                   htmlFor='white'
                   className={`cursor-pointer w-12 h-full bg-white border-[3px] border-gray-300 ${
-                    selectedColor === 'white' ? 'border-red-500' : ''
+                    product.color === 'white' ? 'border-red-500' : ''
                   } `}
                 ></label>
                 {/* black 라디오 버튼 */}
@@ -121,7 +117,7 @@ export default function UploadProduct() {
                   id='black'
                   name='color'
                   value='black'
-                  checked={selectedColor === 'black'}
+                  checked={product.color === 'black'}
                   onChange={handleProductChange}
                   required
                   className='hidden'
@@ -129,7 +125,7 @@ export default function UploadProduct() {
                 <label
                   htmlFor='black'
                   className={`cursor-pointer w-12 h-full bg-black border-[3px] border-gray-300 ${
-                    selectedColor === 'black' ? 'border-red-500' : ''
+                    product.color === 'black' ? 'border-red-500' : ''
                   } `}
                 ></label>
               </div>
