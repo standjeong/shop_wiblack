@@ -51,7 +51,7 @@ async function checkIsAdmin(uid) {
   });
 }
 
-export function addNewProduct(product, imgUrl) {
+export async function addNewProduct(product, imgUrl) {
   const id = uuidv4();
   return set(ref(database, `products/${id}`), {
     productId: id,
@@ -59,5 +59,14 @@ export function addNewProduct(product, imgUrl) {
     price: parseInt(product.price),
     image: imgUrl,
     option: product.option.split(','),
+  });
+}
+
+export async function getProducts() {
+  return get(ref(database, 'products')).then((snapshot) => {
+    if (snapshot.exists()) {
+      return Object.values(snapshot.val());
+    }
+    return [];
   });
 }

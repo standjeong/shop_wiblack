@@ -6,8 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
 import ErrorPage from './pages/ErrorPage';
 import Home from './pages/Home';
-import ProductsBlack from './pages/ProductsBlack';
-import ProductsWhite from './pages/ProductsWhite';
+import Products from './pages/Products';
 import ProductDetail from './pages/ProductDetail';
 import UploadProduct from './pages/UploadProduct';
 import Cart from './pages/Cart';
@@ -23,8 +22,8 @@ const router = createBrowserRouter([
         index: true,
         element: <Home />,
       },
-      { path: '/products/black', element: <ProductsBlack /> },
-      { path: '/products/white', element: <ProductsWhite /> },
+      { path: '/products/black', element: <Products color='black' /> },
+      { path: '/products/white', element: <Products color='white' /> },
       { path: '/products/:productId', element: <ProductDetail /> },
       {
         path: '/products/upload',
