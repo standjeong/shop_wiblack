@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { getProducts } from '../api/firebase';
 
@@ -20,12 +21,14 @@ export default function ArrivalsSection({ title }) {
             .filter((product) => product.color === title)
             .splice(0, 4)
             .map((product) => (
-              <li
+              <Link
+                to={`/products/${product.productId}`}
                 className='flex items-end bg-[#3aac86] overflow-hidden rounded-[130px] md:last:hidden lg:last:block'
                 key={product.productId}
+                state={product}
               >
                 <img src={product.image} alt={product.title} />
-              </li>
+              </Link>
             ))}
       </ul>
     </section>

@@ -1,15 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-export default function ProductCard({
-  color,
-  product: { productId, title, image, category, price },
-}) {
+export default function ProductCard({ color, product }) {
+  const { productId, title, image, category, price } = product;
   return (
-    <li
+    <Link
+      to={`/products/${productId}`}
       className={`h-full flex flex-col justify-end ${
         color === 'black' ? 'bg-[#7fffd4]' : 'bg-[#9ebbff]'
       }`}
       key={productId}
+      state={product}
     >
       <div className='overflow-hidden '>
         <img
@@ -25,6 +26,6 @@ export default function ProductCard({
           <p>₩{price.toLocaleString('ko-KR')}</p>
         </div>
       </div>
-    </li>
+    </Link>
   );
 }
