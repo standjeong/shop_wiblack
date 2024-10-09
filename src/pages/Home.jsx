@@ -6,8 +6,8 @@ export default function Home() {
   return (
     <div className='flex flex-col items-center'>
       <Banner />
-      <ArrivalsSection title='Black' />
-      <ArrivalsSection title='White' />
+      <ArrivalsSection title='black' />
+      <ArrivalsSection title='white' />
     </div>
   );
 }

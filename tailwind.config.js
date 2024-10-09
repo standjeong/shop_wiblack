@@ -1,8 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{js,jsx}'],
+  content: ['./src/**/*.{html,js,jsx,ts,tsx}'],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        bannerGradient: 'linear-gradient(273deg, #f8ceec 0%, #a88beb 74%)',
+      },
+    },
   },
   plugins: [],
 };

@@ -1,7 +1,6 @@
 import React from 'react';
 import { useAuthContext } from '../context/AuthContext';
 import UserIcon from './UserIcon';
-import { FiShoppingCart } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
 export default function Header() {
@@ -10,23 +9,23 @@ export default function Header() {
   // console.log(user);
 
   return (
-    <header className='flex w-full px-10 justify-between items-center bg-slate-300 p-2'>
+    <header className='sticky top-0 z-50 flex w-full py-6 px-10 justify-between items-center bg-bannerGradient'>
       <Link to='/'>
         <h1 className='font-bold text-2xl'>WiBlack</h1>
       </Link>
-      <nav className='flex gap-2 text-lg'>
-        <Link to='/products/black'>Black</Link>
-        <Link to='/products/white'>White</Link>
+      <nav className='flex gap-3 absolute left-1/2 -translate-x-1/2 text-lg font-semibold'>
+        <Link to='/products/black'># Black</Link>
+        <Link to='/products/white'># White</Link>
       </nav>
-      <nav className='flex gap-3 items-center'>
+      <nav className='flex gap-3 items-center text-gray-900 font-medium'>
         {user && user.isAdmin && <Link to='/products/upload'>상품등록</Link>}
         <Link to='/cart'>
-          <FiShoppingCart className='text-2xl' />
+          <p>CART</p>
         </Link>
-        {!user && <button onClick={login}>로그인</button>}
+        {!user && <button onClick={login}>LOGIN</button>}
         {user && (
           <div className='flex gap-1'>
-            <button onClick={logout}>로그아웃</button>
+            <button onClick={logout}>LOGOUT</button>
             <UserIcon user={user} />
           </div>
         )}
