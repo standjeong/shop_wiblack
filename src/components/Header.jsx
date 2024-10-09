@@ -9,15 +9,15 @@ export default function Header() {
   // console.log(user);
 
   return (
-    <header className='sticky top-0 z-50 flex w-full py-6 px-10 justify-between items-center bg-bannerGradient'>
+    <header className='sticky top-0 z-50 flex flex-wrap w-full p-6 justify-between items-center bg-bannerGradient sm:py-6 sm:px-10'>
       <Link to='/'>
-        <h1 className='font-bold text-2xl'>WiBlack</h1>
+        <h1 className='font-bold text-2xl w-2/6 sm:w-auto'>WiBlack</h1>
       </Link>
-      <nav className='flex gap-3 absolute left-1/2 -translate-x-1/2 text-lg font-semibold'>
+      <nav className='flex gap-3 order-3 mt-2 text-lg font-semibold sm:absolute sm:left-1/2 sm:-translate-x-1/2 sm:order-2 sm:mt-0'>
         <Link to='/products/black'># Black</Link>
         <Link to='/products/white'># White</Link>
       </nav>
-      <nav className='flex gap-3 items-center text-gray-900 font-medium'>
+      <nav className='flex gap-3 items-center text-gray-900 font-medium justify-end w-4/6 sm:w-auto'>
         {user && user.isAdmin && <Link to='/products/upload'>상품등록</Link>}
         <Link to='/cart'>
           <p>CART</p>
