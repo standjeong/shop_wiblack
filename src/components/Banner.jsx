@@ -1,4 +1,5 @@
 import React from 'react';
+import ShapeDivider from './ShapeDivider';
 
 export default function Banner() {
   return (
@@ -10,6 +11,7 @@ export default function Banner() {
           alt='banner1'
         />
       </div>
+      <ShapeDivider />
     </section>
   );
 }
