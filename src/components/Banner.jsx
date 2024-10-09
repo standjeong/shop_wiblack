@@ -10,6 +10,9 @@ export default function Banner() {
           src='/images/banner1.png'
           alt='banner1'
         />
+        <p className='text-5xl absolute top-[40%] left-[17rem] md:top-1/2 md:left-[27rem] font-bold font-banner text-[#ffa2a2]'>
+          "We are complete with only White and Black."
+        </p>
       </div>
       <ShapeDivider />
     </section>
