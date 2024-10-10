@@ -2,6 +2,7 @@ import React from 'react';
 import { useAuthContext } from '../context/AuthContext';
 import UserIcon from './UserIcon';
 import { Link } from 'react-router-dom';
+import CartStatus from './CartStatus';
 
 export default function Header() {
   const { login, logout, user } = useAuthContext();
@@ -20,7 +21,7 @@ export default function Header() {
       <nav className='flex gap-3 items-center text-gray-900 font-medium justify-end w-4/6 sm:w-auto'>
         {user && user.isAdmin && <Link to='/products/upload'>상품등록</Link>}
         <Link to='/cart'>
-          <p>CART</p>
+          <CartStatus />
         </Link>
         {!user && <button onClick={login}>LOGIN</button>}
         {user && (
