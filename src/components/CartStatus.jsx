@@ -15,9 +15,11 @@ export default function CartStatus() {
   return (
     <div className='flex'>
       <p>CART</p>
-      <p className='rounded-full w-5 h-5 text-center text-sm leading-snug text-white bg-red-400'>
-        {NUMBER}
-      </p>
+      {NUMBER > 0 && (
+        <p className='rounded-full w-5 h-5 text-center text-sm leading-snug text-white bg-red-400'>
+          {NUMBER}
+        </p>
+      )}
     </div>
   );
 }
