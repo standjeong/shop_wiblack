@@ -1,19 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { addOrUpdateToCart } from '../api/firebase';
+import { useAuthContext } from '../context/AuthContext';
 
 export default function ProductDetail() {
   const {
-    state: { title, price, option, image, description },
+    state: { title, price, option, image, description, productId },
   } = useLocation();
+  const [selectedOption, setSelectedOption] = useState(option[0]);
+  const { uid } = useAuthContext();
+  const [isSuccess, setIsSuccess] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const [selectedOption, setSelectedOption] = useState(option[0]);
-
   const handleChangeSize = (e) => setSelectedOption(e.target.value);
+  const handleClick = async () => {
+    const product = {
+      productId,
+      size: selectedOption,
+      title,
+      image,
+      price,
+      quantity: 1,
+    };
+    await addOrUpdateToCart(product, uid).then(() => {
+      setIsSuccess(true);
+      setTimeout(() => setIsSuccess(false), 3000);
+    });
+  };
 
+  // description 스타일
   const splitText = description.split(/([.])/);
   const formattedText = splitText.map((sentence, index) => (
     <span key={index}>
@@ -57,7 +75,11 @@ export default function ProductDetail() {
               ))}
             </select>
           </div>
-          <button className='font-semibold text-white bg-gray-900 py-2 rounded-md'>
+          {isSuccess && <p>✅장바구니에 추가되었습니다.</p>}
+          <button
+            className='font-semibold text-white bg-gray-900 py-2 rounded-md'
+            onClick={handleClick}
+          >
             장바구니 담기
           </button>
         </div>
