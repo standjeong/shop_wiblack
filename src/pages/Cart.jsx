@@ -26,7 +26,7 @@ export default function Cart() {
             {isLoading && <p>로딩중...</p>}
             {cart &&
               cart.map((orderItem) => (
-                <CartItem key={cart.orderId} orderItem={orderItem} />
+                <CartItem key={orderItem.orderId} orderItem={orderItem} />
               ))}
           </ul>
         </article>
