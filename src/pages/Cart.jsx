@@ -1,18 +1,14 @@
 import React from 'react';
-import { useQuery } from '@tanstack/react-query';
 import CartItem from '../components/CartItem';
 import CartPriceInfo from '../components/CartPriceInfo';
-import { getCart } from '../api/firebase';
-import { useAuthContext } from '../context/AuthContext';
+import useCart from '../hooks/useCart';
 
 const SHIPPING_COST = 3000;
 
 export default function Cart() {
-  const { uid } = useAuthContext();
-  const { data: cart, isLoading } = useQuery({
-    queryKey: ['cart', uid],
-    queryFn: () => getCart(uid),
-  });
+  const {
+    cartQuery: { data: cart, isLoading },
+  } = useCart();
 
   const totalProductPrice =
     cart &&

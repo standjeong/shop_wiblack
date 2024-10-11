@@ -1,23 +1,22 @@
 import React from 'react';
 import { CiSquareMinus, CiSquarePlus, CiCircleRemove } from 'react-icons/ci';
-import { addOrUpdateToCart, deleteFromCart } from '../api/firebase';
-import { useAuthContext } from '../context/AuthContext';
+import useCart from '../hooks/useCart';
 
 export default function CartItem({ orderItem }) {
   const { orderId, title, image, price, size, quantity } = orderItem;
-  const { uid } = useAuthContext();
+  const { addOrUpdateToCartMutation, deleteFromCartMutation } = useCart();
 
   const priceByQuantity = price * quantity;
 
   const handleMinus = () => {
     if (quantity < 2) return;
-    addOrUpdateToCart({ ...orderItem, quantity: quantity - 1 }, uid);
+    addOrUpdateToCartMutation.mutate({ ...orderItem, quantity: quantity - 1 });
   };
   const handlePlus = () => {
-    addOrUpdateToCart({ ...orderItem, quantity: quantity + 1 }, uid);
+    addOrUpdateToCartMutation.mutate({ ...orderItem, quantity: quantity + 1 });
   };
   const handleDelete = () => {
-    deleteFromCart(uid, orderId);
+    deleteFromCartMutation.mutate(orderId);
   };
 
   return (

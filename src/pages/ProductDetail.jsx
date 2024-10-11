@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { addOrUpdateToCart } from '../api/firebase';
-import { useAuthContext } from '../context/AuthContext';
+import useCart from '../hooks/useCart';
 
 export default function ProductDetail() {
   const {
     state: { title, price, option, image, description, productId },
   } = useLocation();
   const [selectedOption, setSelectedOption] = useState(option[0]);
-  const { uid } = useAuthContext();
   const [isSuccess, setIsSuccess] = useState(false);
+  const { addOrUpdateToCartMutation } = useCart();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -25,9 +24,11 @@ export default function ProductDetail() {
       price,
       quantity: 1,
     };
-    await addOrUpdateToCart(product, uid).then(() => {
-      setIsSuccess(true);
-      setTimeout(() => setIsSuccess(false), 3000);
+    addOrUpdateToCartMutation.mutate(product, {
+      onSuccess: () => {
+        setIsSuccess(true);
+        setTimeout(() => setIsSuccess(false), 3000);
+      },
     });
   };
 
@@ -36,7 +37,6 @@ export default function ProductDetail() {
   const formattedText = splitText.map((sentence, index) => (
     <span key={index}>
       {index % 2 === 0 && index < splitText.length - 1 && '🔹' + sentence + '.'}
-
       {index % 2 !== 0 && <br />}
     </span>
   ));
