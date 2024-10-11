@@ -42,9 +42,9 @@ export default function UploadProduct() {
   return (
     <div className='flex flex-col items-center'>
       <h1 className='text-2xl text-center my-10'>상품 등록</h1>
-      <section className='flex-col gap-3 justify-center max-w-screen-lg'>
+      <section className='flex-col gap-3 justify-center max-w-screen-lg px-4'>
         <div className='flex gap-2'>
-          <div className='w-1/3 w-[250px] max-h-[350px] mb-2 overflow-hidden'>
+          <div className='w-[250px] max-h-[350px] mb-2 overflow-hidden'>
             {file && (
               <img
                 src={URL.createObjectURL(file)}
@@ -59,7 +59,7 @@ export default function UploadProduct() {
               </div>
             )}
           </div>
-          <form id='newProduct' onSubmit={handleSubmit} className='w-2/3'>
+          <form id='newProduct' onSubmit={handleSubmit} className='flex-1'>
             <div className={FormField_CLASS}>
               <label>이미지 파일</label>
               <input
