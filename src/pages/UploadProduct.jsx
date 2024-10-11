@@ -1,7 +1,7 @@
 import { React, useState } from 'react';
 import { IoImageOutline } from 'react-icons/io5';
 import { imageUpload } from '../api/imageUploader';
-import { addNewProduct } from '../api/firebase';
+import useProducts from '../hooks/useProducts';
 
 const FormField_CLASS = 'grid grid-cols-4 border-[1px] p-2 mb-2';
 
@@ -10,6 +10,8 @@ export default function UploadProduct() {
   const [file, setFile] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+
+  const { addProductMutation } = useProducts();
 
   const handleProductChange = (e) => {
     const { name, value } = e.target;
@@ -22,13 +24,17 @@ export default function UploadProduct() {
     setIsLoading(true);
     imageUpload(file)
       .then((imgUrl) => {
-        addNewProduct(product, imgUrl);
-      })
-      .then(() => {
-        setIsSuccess(true);
-        setTimeout(() => {
-          setIsSuccess(null);
-        }, 3000);
+        addProductMutation.mutate(
+          { product, imgUrl },
+          {
+            onSuccess: () => {
+              setIsSuccess(true);
+              setTimeout(() => {
+                setIsSuccess(null);
+              }, 3000);
+            },
+          }
+        );
       })
       .finally(() => setIsLoading(false));
   };

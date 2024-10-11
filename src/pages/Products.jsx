@@ -1,13 +1,11 @@
 import React from 'react';
-import { useQuery } from '@tanstack/react-query';
-import { getProducts } from '../api/firebase';
 import ProductCard from '../components/ProductCard';
+import useProducts from '../hooks/useProducts';
 
 export default function Products({ color }) {
-  const { data: products, isLoading } = useQuery({
-    queryKey: ['products'],
-    queryFn: getProducts,
-  });
+  const {
+    productsQuery: { data: products, isLoading },
+  } = useProducts();
 
   return (
     <div className='flex flex-col items-center'>

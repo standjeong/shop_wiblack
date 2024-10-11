@@ -1,13 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
-import { getProducts } from '../api/firebase';
+import useProducts from '../hooks/useProducts';
 
 export default function ArrivalsSection({ title }) {
-  const { data: products, isLoading } = useQuery({
-    queryKey: ['products'],
-    queryFn: getProducts,
-  });
+  const {
+    productsQuery: { data: products, isLoading },
+  } = useProducts();
 
   return (
     <section className='max-w-screen-xl flex flex-col items-center my-10'>
