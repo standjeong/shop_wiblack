@@ -1,70 +1,38 @@
-# Getting Started with Create React App
+## 🖤WiBlack🤍 소개
+> '**WiBlack**'은 Black & White 색상의 의류만 판매하는 컨셉의 쇼핑몰입니다.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- 홈페이지 구조
+  - 메인
+  - 상품 페이지(Black, White)
+  - 상품 상세페이지
+  - 장바구니 페이지
+  - 상품 등록 페이지
+  
+- 구현 기능
+  - 구글 계정을 활용한 로그인 & 로그아웃
+  - 상품 업로드
+  - 상품 목록 보기
+  - 장바구니 담기
+  - 장바구니 수량 조정 & 삭제
+  - 장바구니 배지(badge)표시
+  - 비로그인 사용자도 장바구니 기능 사용가능하게
+  - 상품 업로드 페이지는 관리자만 접근할 수 있게
+  - 반응형 디자인
 
-## Available Scripts
+  
+## 🔨사용 도구
+- React
+- React Query
+- React Router
+- Tailwind CSS
+- Firebase
+- Cloudinary
 
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🔧에러 & 어려웠던 점
+- 장바구니에 삼품을 담거나 수량을 변경했을 때 firebase의 db에는 업데이트 된 수량이 바로 반영되지만 브라우저의 UI(헤더의 카트에 담긴 수량을 표시하는 배지와 장바구니 페이지)에는 즉각적으로 반영되지 않음. 
+    - 원인 : 캐시 문제. 리액트 쿼리에서 데이터를 수정하기 전의 캐시를 가지고 있는 상태라서 업데이트된 내용이 반영되지 않고 이전의 상태로 남아있는 것이었음.
+    - 해결방법 : invalidateQueries를 사용하여 쿼리를 무효화하여 캐시를 지우기. + useQuery 대신 useMutation을 사용해서 지정한 키의 해당 쿼리가 변경될 때마다 쿼리를 무효화하도록 변경.
+  
+- <UploadProduct>컴포넌트에서 첫 렌더링시 input의 value에 할당한 product.title을 읽어오지 못하여 에러
+  - 원인 : input이 onChange 될때마다 useState로 product변수에 해당 input의 name을 key로 설정하여 입력된 값을 추가하도록 설정하였는데, product의 초기값이 undefined로 설정 ( `const [product, setProduct] = useState()`) 되어있었기 때문. 즉, 컴포넌트 렌더링 시 undefined.title을 읽어오게 되어서 에러가 발생한 것.
+  - 해결방법 : product의 초기값을 빈 객체로 설정해서 객체의 속성을 읽어오도록 변경하기. 해당하는 속성이 없더라도 에러를 발생시키지 않고 undefined를 반환하므로.
