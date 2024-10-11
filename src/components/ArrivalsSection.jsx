@@ -21,11 +21,17 @@ export default function ArrivalsSection({ title }) {
             .map((product) => (
               <Link
                 to={`/products/${product.productId}`}
-                className='flex items-end bg-[#3aac86] overflow-hidden rounded-[130px] md:last:hidden lg:last:block'
+                className='group relative flex items-end bg-[#3aac86] overflow-hidden rounded-[130px] md:last:hidden lg:last:block'
                 key={product.productId}
                 state={product}
               >
                 <img src={product.image} alt={product.title} />
+                <div className='absolute top-0 left-0 w-full h-full px-4 text-white bg-slate-900 bg-opacity-70 flex flex-col gap-2 justify-center items-center text-center items-center transform translate-y-full transition-transform duration-300 ease-in-out group-hover:translate-y-0'>
+                  <h3 className='font-bold text-xl'>{product.title}</h3>
+                  <p className='text-lg'>
+                    ₩{product.price.toLocaleString('kr-KR')}
+                  </p>
+                </div>
               </Link>
             ))}
       </ul>
