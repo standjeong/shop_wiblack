@@ -10,7 +10,7 @@
   <details>
     <summary> <h3> Wireframe & UI design 확인하기 </h3> </summary>
     <div markdown="1">
-      <img src='https://github.com/user-attachments/assets/00dff82d-2b6b-42f5-8ecc-dbcb06ba0bf7' />
+      <img src='https://github.com/user-attachments/assets/1b8b7dcc-51d7-4f81-952f-25745e513e59' />
       <img src='https://github.com/user-attachments/assets/4aa38f6d-4fb9-4752-b0a7-2a557358f797'/>
     </div>
   </details>
