@@ -35,7 +35,7 @@
 - <img src="https://img.shields.io/badge/Tailwind CSS-06B6D4?style=flat&logo=tailwindcss&logoColor=white" alt="icon"/>
 - <img src="https://img.shields.io/badge/Firebase-DD2C00?style=flat&logo=firebase&logoColor=white" alt="icon"/>
 - <img src="https://img.shields.io/badge/Cloudinary-3448C5?style=flat&logo=cloudinary&logoColor=white" alt="icon"/>
-- <img src="https://img.shields.io/badge/Figma-#F24E1E?style=flat&logo=figma&logoColor=white" alt="icon"/>
+- <img src="https://img.shields.io/badge/Figma-F24E1E?style=flat&logo=figma&logoColor=white" alt="icon"/>
   
 
 ## 🔧에러 & 어려웠던 점
