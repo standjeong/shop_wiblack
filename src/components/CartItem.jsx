@@ -4,16 +4,16 @@ import useCart from '../hooks/useCart';
 
 export default function CartItem({ orderItem }) {
   const { orderId, title, image, price, size, quantity } = orderItem;
-  const { addOrUpdateToCartMutation, deleteFromCartMutation } = useCart();
+  const { updateCartQuantityMutaion, deleteFromCartMutation } = useCart();
 
   const priceByQuantity = price * quantity;
 
   const handleMinus = () => {
     if (quantity < 2) return;
-    addOrUpdateToCartMutation.mutate({ ...orderItem, quantity: quantity - 1 });
+    updateCartQuantityMutaion.mutate({ orderId, newQuantity: quantity - 1 });
   };
   const handlePlus = () => {
-    addOrUpdateToCartMutation.mutate({ ...orderItem, quantity: quantity + 1 });
+    updateCartQuantityMutaion.mutate({ orderId, newQuantity: quantity + 1 });
   };
   const handleDelete = () => {
     deleteFromCartMutation.mutate(orderId);

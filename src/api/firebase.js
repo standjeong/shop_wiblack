@@ -6,7 +6,15 @@ import {
   signOut,
   onAuthStateChanged,
 } from 'firebase/auth';
-import { getDatabase, ref, get, set, remove } from 'firebase/database';
+import {
+  getDatabase,
+  ref,
+  get,
+  set,
+  update,
+  remove,
+  runTransaction,
+} from 'firebase/database';
 import { v4 as uuidv4 } from 'uuid';
 
 const firebaseConfig = {
@@ -80,11 +88,22 @@ export async function getCart(userId) {
   });
 }
 
-export async function addOrUpdateToCart(product, userId) {
+export async function addToCart(product, userId) {
   const orderId = product.productId + product.size;
-  return set(ref(database, `carts/${userId}/${orderId}`), {
-    orderId,
-    ...product,
+  const response = await runTransaction(
+    ref(database, `carts/${userId}/${orderId}`),
+    (currentProduct) => {
+      if (currentProduct === null) {
+        return { orderId, ...product };
+      }
+    }
+  );
+  return response.committed;
+}
+
+export async function updateCartQuantity(userId, orderId, newQuantity) {
+  update(ref(database, `carts/${userId}/${orderId}`), {
+    quantity: newQuantity,
   });
 }
 

@@ -6,9 +6,10 @@ export default function ProductDetail() {
   const {
     state: { title, price, option, image, description, productId },
   } = useLocation();
+  const { addToCartMutation } = useCart();
   const [selectedOption, setSelectedOption] = useState(option[0]);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const { addOrUpdateToCartMutation } = useCart();
+  const [isSuccess, setIsSuccess] = useState();
+  const [isAdded, setIsAdded] = useState();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -24,10 +25,18 @@ export default function ProductDetail() {
       price,
       quantity: 1,
     };
-    addOrUpdateToCartMutation.mutate(product, {
-      onSuccess: () => {
-        setIsSuccess(true);
-        setTimeout(() => setIsSuccess(false), 3000);
+
+    addToCartMutation.mutate(product, {
+      onSuccess: (committed) => {
+        if (committed) {
+          setIsSuccess('✅장바구니에 추가되었습니다.');
+          setIsAdded();
+          setTimeout(() => setIsSuccess(false), 3000);
+        } else {
+          setIsAdded('❗이미 장바구니에 담겼습니다.');
+          setIsSuccess();
+          setTimeout(() => setIsAdded(), 3000);
+        }
       },
     });
   };
@@ -75,7 +84,8 @@ export default function ProductDetail() {
               ))}
             </select>
           </div>
-          {isSuccess && <p>✅장바구니에 추가되었습니다.</p>}
+          {isSuccess && <p>{isSuccess}</p>}
+          {isAdded && <p>{isAdded}</p>}
           <button
             className='font-semibold text-white bg-gray-900 py-2 rounded-md'
             onClick={handleClick}
