@@ -20,7 +20,7 @@ export default function CartItem({ orderItem }) {
   };
 
   return (
-    <li className='flex my-2' key={orderId}>
+    <li className='flex my-2 pb-2 border-b border-gray-600' key={orderId}>
       <div className='flex items-center w-2/4'>
         <img className='w-28' src={image} alt={title} />
         <div>

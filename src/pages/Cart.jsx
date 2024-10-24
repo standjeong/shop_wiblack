@@ -3,13 +3,12 @@ import CartItem from '../components/CartItem';
 import CartPriceInfo from '../components/CartPriceInfo';
 import useCart from '../hooks/useCart';
 
-const SHIPPING_COST = 3000;
-
 export default function Cart() {
   const {
     cartQuery: { data: cart, isLoading },
   } = useCart();
 
+  const SHIPPING_COST = cart && cart.length ? 3000 : 0;
   const totalProductPrice =
     cart &&
     cart.reduce((acc, current) => acc + current.price * current.quantity, 0);
