@@ -46,3 +46,9 @@
 - <UploadProduct>컴포넌트에서 첫 렌더링시 input의 value에 할당한 product.title을 읽어오지 못하여 에러
   - 원인 : input이 onChange 될때마다 useState로 product변수에 해당 input의 name을 key로 설정하여 입력된 값을 추가하도록 설정하였는데, product의 초기값이 undefined로 설정 ( `const [product, setProduct] = useState()`) 되어있었기 때문. 즉, 컴포넌트 렌더링 시 undefined.title을 읽어오도록 되면서 속성 접근 자체가 허용되지 않는 undefined에 속성을 접근하려고 해서 에러가 발생한 것.
   - 해결방법 : product의 초기값을 빈 객체로 설정해서 객체의 속성을 읽어오도록 변경하기. 해당하는 속성이 없더라도 에러를 발생시키지 않고 undefined를 반환하므로.
+
+## 🌳프로젝트 의의
+- Firebase Authentication의  소셜 로그인 기능을 통해 간편하게 구글 계정으로 로그인하는 기능을 구현해 볼 수 있었다.
+- 로그인한 사용자별로 권한을 설정하여 관리자만 접근이 가능하도록 컴포넌트를 통해 사용자를 식별하고 접근을 제어하는 방식을 구현해 볼 수 있었다.
+- 장바구니 기능과 상품 업로드 및 업로드된 상품을 읽어오도록 하기 위해 Firebase Realtime Database를 사용하는 과정에서 데이터베이스의 계층 구조를 정의하고 설계하는 것에 대한 중요성을 이해할 수 있었다.
+- Cloudinary에서 제공하는 기능을 통해 이미지를 지정된 크기와 형식으로 간편하게 업로드하고, 업로드 한 이미지의 URL을 Firebase의 데이터베이스에 저장하여 두 플랫폼을 통합해서 사용하는 경험을 할 수 있었다.
